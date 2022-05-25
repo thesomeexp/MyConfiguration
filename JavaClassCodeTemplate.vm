@@ -9,7 +9,10 @@
 #if ($logCondition)import lombok.extern.slf4j.Slf4j;#end
 #if ($controllerCondition)import org.springframework.web.bind.annotation.RestController;#end
 #if ($serviceCondition)import org.springframework.stereotype.Service;#end
-
+/**
+ * @author author
+ * @date ${DATE}
+ */
 #parse("File Header.java")
 #if ($logCondition)@Slf4j#end
 #if ($entityCondition)@Data#end
