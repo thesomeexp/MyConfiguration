@@ -1,0 +1,23 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+
+#set ($entityCondition = $NAME.endsWith("Bo") || $NAME.endsWith("BO") || $NAME.endsWith("Dto") || $NAME.endsWith("DTO") || $NAME.endsWith("Po") || $NAME.endsWith("PO") || $NAME.endsWith("Properties") || $NAME.endsWith("Query") || $NAME.endsWith("Vo") || $NAME.endsWith("VO"))
+#set ($controllerCondition = $NAME.endsWith("Controller"))
+#set ($serviceCondition = $NAME.endsWith("ServiceImpl"))
+#set ($utilCondition = $NAME.endsWith("Util") || $NAME.endsWith("Utils"))
+#set ($logCondition = $controllerCondition || $serviceCondition || $utilCondition)
+#if ($entityCondition)import lombok.Data;#end
+#if ($logCondition)import lombok.extern.slf4j.Slf4j;#end
+#if ($controllerCondition)import org.springframework.web.bind.annotation.RestController;#end
+#if ($serviceCondition)import org.springframework.stereotype.Service;#end
+/**
+ * @author author
+ * @date ${DATE}
+ */
+#parse("File Header.java")
+#if ($logCondition)@Slf4j#end
+#if ($entityCondition)@Data#end
+#if ($controllerCondition)@RestController#end
+#if ($serviceCondition)@Service#end
+
+public class ${NAME} {
+}
